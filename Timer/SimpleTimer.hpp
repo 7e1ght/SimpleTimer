@@ -18,12 +18,17 @@ public:
 
     void start(const int32_t interval, const int64_t times);    
     void stop();
-    SimpleTimer(SimpleTimerConsumer& consumer);
 
     bool isActive() const;
     int32_t getID() const; 
 
     ~SimpleTimer();
+
+    SimpleTimer(SimpleTimerConsumer& consumer);
+    SimpleTimer(const SimpleTimer& other) = delete;
+    SimpleTimer(SimpleTimer&& other) = default;
+    const SimpleTimer& operator=(const SimpleTimer& other) = delete;
+    SimpleTimer& operator=(SimpleTimer&& other) = default;
 
 private:
     SimpleTimerConsumer& mConsumer;
